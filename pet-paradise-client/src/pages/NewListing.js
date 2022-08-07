@@ -12,6 +12,9 @@ import PetInformation from '../components/ListingForm/PetInformation';
 import generateSchema from '../utils/yup-listingform';
 
 
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+
 const NewListing = () => {
 
     const navigate = useNavigate();
@@ -79,18 +82,22 @@ const NewListing = () => {
     }
 
     return (
-    <div className={styles.mainContainer}>
-        <h1>Add New Listing</h1>
-        <div>
-            <form onSubmit={handleSubmit(onSubmit, onError)}>
-                {renderStep()}
-                <div className={styles.btnGroup}>
-                    <button type='button' onClick={() => changeStep("backward")}>Back</button>
-                    <button type='submit'>{step === totalSteps ? "Submit" : "Next"}</button>
-                </div>
-            </form>
+    <>
+        <Navbar />
+        <div className={styles.mainContainer}>
+            <h1>Add New Listing</h1>
+            <div>
+                <form onSubmit={handleSubmit(onSubmit, onError)}>
+                    {renderStep()}
+                    <div className={styles.btnGroup}>
+                        <button type='button' onClick={() => changeStep("backward")}>Back</button>
+                        <button type='submit'>{step === totalSteps ? "Submit" : "Next"}</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
+        <Footer />
+    </>
 )
 }
 

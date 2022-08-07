@@ -16,8 +16,7 @@ const PetInformation = ( {watch, register} ) => {
             <div className={styles.radioContainer}>
                 {
                     ["Cat", "Dog"].map( (value, index) => (
-                        
-                        <button type='button' className={styles.radioBtn} value={value} name="petType" {...register('petType')}>{value}</button>
+                        <button type='radio' className={styles.radioBtn} value={value} name="petType" {...register('petType')}>{value}</button>
                     ))
                 
                 }
