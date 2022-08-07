@@ -2,9 +2,18 @@ import React, { useEffect, useState } from 'react';
 import styles from '../../styles/listingform.module.scss';
 
 const PetInformation = ( {watch, register} ) => {
-  
+    
+    const [selectedRadio, setSelectedRadio] = useState(null);
+
     const watchDesc = watch("desc");
+    const watchPet = watch("petType");
     const watchImages = watch("images") || [];
+
+
+    const updateSelected = (e) => {
+        // console.log(e.target.value);
+        setSelectedRadio(e.target.value);
+    }
 
     return (
         <>
@@ -14,18 +23,26 @@ const PetInformation = ( {watch, register} ) => {
             </div>
             
             <div className={styles.radioContainer}>
-                {
-                    ["Cat", "Dog"].map( (value, index) => (
-                        <button type='radio' className={styles.radioBtn} value={value} name="petType" {...register('petType')}>{value}</button>
-                    ))
-                
-                }
+                <label htmlFor='petType' className={styles.petTypeLabel}>Pet Type</label>
+                <div className={styles.radioBtnContainer}>
+                    {
+                        ['Cat', 'Dog'].map( (value, index) => (
+                            <label className={selectedRadio === value ? styles.radioActive : styles.radioBtn}>
+                                <input type="radio"  
+                                        data={value} name={value} value={value} 
+                                        onClick={ e => updateSelected(e) } {...register('petType')}>
 
+                                </input>
+                                {value}
+                            </label>
+                        ))
+                    }
+                </div>
             </div>
             
             <div className={styles.inputField}>
                 <label for="description">Description</label>
-                <textarea name="description" {...register('desc')}></textarea>
+                <textarea className={styles.textarea} type="text" name="description" {...register('desc')}></textarea>
             </div>
 
         </>

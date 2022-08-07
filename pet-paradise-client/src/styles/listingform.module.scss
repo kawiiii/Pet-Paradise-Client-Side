@@ -45,7 +45,7 @@ form {
 
 .btnGroup {
     width: 100%;
-    border: 2px solid red;
+    // border: 2px solid red;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
@@ -56,14 +56,59 @@ form {
     // padding: 20px;
 }
 
+.textarea {
+    border: none;
+}
+.textarea:focus {
+    border: none;
+}
+
 .radioContainer {
+    // border: 2px solid green;
+    width: 100%;
+}
+
+.petTypeLabel {
+    display: block;
+    // width: 100%;
+}
+
+.radioBtnContainer {
     display: flex;
-    gap: 20px;
+    gap: 10px;
+
 }
 
 .radioBtn {
-    // display: flex;
-    display: grid;
-    grid-template-columns: 1fr;
-    border: 2px solid red;
+    // display: grid;
+    padding: 10px 8px;
+    // width: fit-content;
+    border-bottom: 2px solid transparent;
+}
+
+.radioActive {
+    padding: 10px 8px;  
+    color: black; 
+    border-bottom: 2px solid wheat;
+}
+
+.backBtn {
+    padding: 15px 8px;
+    border: none;
+    background-color: transparent;
+}
+.nextBtn {
+    // border: 2px solid black;
+    outline: none;
+    background-color: #2E4960;
+    color: white;
+    border-radius: 10px;
+    transition: 100ms;
+}
+.nextBtn:hover {
+    // border: none;
+    // border-radius: 0px;
+    // background-color: transparent;
+    // color: #2E4960;
+    cursor: pointer;
 }

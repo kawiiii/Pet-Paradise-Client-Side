@@ -21,7 +21,7 @@ const PersonalInformation = ( {watch, register} ) => {
 
             <div className={styles.inputField}>
                 <label for="address">Address</label>
-                <input type="address" name='address' {...register("address")}></input>
+                <input type="text" name='address' {...register("address")}></input>
             </div>
         </>
     )

@@ -20,6 +20,7 @@ const NewListing = () => {
     const navigate = useNavigate();
 
     const [step, setStep] = useState(1);
+    const [formSubmitted, setFormSubmitted] = useState(false);
     const totalSteps = 2;
 
     const {watch, register, handleSubmit, formState: {errors}} = useForm({
@@ -48,7 +49,8 @@ const NewListing = () => {
         
         
         axios.post(url, data).then((response) => {
-        // console.log(response.data);
+            console.log(response.data);
+            setFormSubmitted(true);
         });
 
     }
@@ -84,18 +86,25 @@ const NewListing = () => {
     return (
     <>
         <Navbar />
-        <div className={styles.mainContainer}>
-            <h1>Add New Listing</h1>
-            <div>
-                <form onSubmit={handleSubmit(onSubmit, onError)}>
-                    {renderStep()}
-                    <div className={styles.btnGroup}>
-                        <button type='button' onClick={() => changeStep("backward")}>Back</button>
-                        <button type='submit'>{step === totalSteps ? "Submit" : "Next"}</button>
-                    </div>
-                </form>
+        {!formSubmitted &&
+            <div className={styles.mainContainer}>
+                <h1>Add New Listing</h1>
+                <div>
+                    <form onSubmit={handleSubmit(onSubmit, onError)}>
+                        {renderStep()}
+                        <div className={styles.btnGroup}>
+                            <button className={styles.backBtn} type='button' onClick={() => changeStep("backward")}>Back</button>
+                            <button className={styles.nextBtn} type='submit'>{step === totalSteps ? "Submit" : "Next"}</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
+        }
+        {formSubmitted && 
+            <div className={styles.mainContainer}>
+                <h1>Form Submitted</h1>
+            </div>
+        }
         <Footer />
     </>
 )
