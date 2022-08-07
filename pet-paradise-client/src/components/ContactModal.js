@@ -13,7 +13,8 @@ const ContactModal = ({ user, closeModal }) => {
         <div className="modalInfo">
           <p>{user.name}</p>
           <p>{user.email}</p>
-          <p>{user.address}</p>
+          <br></br>
+          <p>Address: {user.address}</p>
         </div>
       </div>
     </div>

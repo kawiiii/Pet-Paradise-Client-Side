@@ -112,3 +112,8 @@ form {
     // color: #2E4960;
     cursor: pointer;
 }
+
+.cardsContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
