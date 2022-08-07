@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-
+import ContactModal from '../components/ContactModal';
 
 import axios from 'axios';
 import styles from '../styles/Global.module.css';
@@ -9,6 +9,8 @@ import styles from '../styles/Global.module.css';
 const Listings = () => {
 
   const [data, setData] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [activeUser, setActiveUser] = useState({});
 
 
   const updateData = async () => {
@@ -22,13 +24,21 @@ const Listings = () => {
   }, [])
 
 
+  const showContactModal = (user) => {
+    setActiveUser(user);
+    setShowModal(true);
+  }
+
+
+  const closeModal = () => {
+    setActiveUser(null);
+    setShowModal(false);
+  }
+
   const renderCards = () => {
-    return data.map( () => (
-      <>
-        <div className='card'>
-          
-        </div>
-      </>
+    // console.log(data);
+    return data.map( (item) => (
+        <button onClick={() => showContactModal(item)}>{item.name}</button>
     ))
   }
 
@@ -39,6 +49,9 @@ const Listings = () => {
           {renderCards()}
         </div>
       <Footer />
+      {
+        showModal && <ContactModal user={activeUser} closeModal={closeModal}/>
+      }
     </>
   )
 }

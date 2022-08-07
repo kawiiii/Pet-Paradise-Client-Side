@@ -1,0 +1,28 @@
+.modalContainer {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.modalContent {
+    padding: 10px 20px;
+    background-color: #2E4960;
+    min-width: 30vw;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
